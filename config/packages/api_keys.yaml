@@ -1,0 +1,4 @@
+parameters:
+    api_key: '%env(API_KEY)%'
+    client_slug: '%env(CLIENT_SLUG)%'
+    api_base_url: 'URL'

@@ -1,0 +1,28 @@
+
+parameters:
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+
+    App\Core\ApiClient:
+        class: App\Core\ApiClient
+        arguments:
+            - '%api_key%'
+            - '%client_slug%'
+            - '%api_base_url%'
+
+    App\Command\LoopCommand:
+        class: App\Command\LoopCommand
+        arguments:
+            - '@App\Core\ApiClient'
+        tags:
+            - { name: console.command }
